@@ -13,10 +13,15 @@
     "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@tanstack/react-query": "^4.2.1",
+    "@tanstack/react-query-devtools": "^4.2.1",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.27.2",
     "emotion-reset": "^3.0.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "recoil": "^0.7.5"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.0",
@@ -35,7 +40,11 @@
     "eslint-plugin-react": "^7.30.1",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
+    "msw": "^0.45.0",
     "prettier": "^2.7.1",
     "typescript": "4.7.4"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

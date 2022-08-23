@@ -1,0 +1,112 @@
+export const CATEGORY_DATA = {
+	categories: [
+		{
+			id: '96',
+			title: '제철회',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '193',
+			title: '정육·계란',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '103',
+			title: '간편식·밀키트',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '199',
+			title: '양념육·가공육',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '204',
+			title: '채소',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '204',
+			title: '채소',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '106',
+			title: '과일',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: '98',
+			title: '새우·게·갑각류',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: '107',
+			title: '디저트·음료·유제품',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '100',
+			title: '조개류·기타해산물',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: '105',
+			title: '소스·기타가공품',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: '97',
+			title: '성게알·알',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: '99',
+			title: '오징어·낙지·연체류',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: '101',
+			title: '김·감태·해조류',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '179',
+			title: '생선류',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '197',
+			title: '유아',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+		{
+			id: '102',
+			title: '건어물',
+			imageSrc: '/',
+			isUpdated: true,
+		},
+		{
+			id: 'all',
+			title: '상품\n전체보기',
+			imageSrc: '/',
+			isUpdated: false,
+		},
+	],
+};

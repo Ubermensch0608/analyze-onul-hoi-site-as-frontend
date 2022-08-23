@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { FC, ReactNode } from 'react';
-import GNB from './GNB';
+import GNB from './GNB/GNB';
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
@@ -11,6 +11,8 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	);
 };
 
-const Main = styled.main``;
+const Main = styled.main`
+	position: relative;
+`;
 
 export default Layout;

@@ -1,4 +1,6 @@
 module.exports = {
+	presets: 'ts-jest',
+	testEnvironment: 'node',
 	collectCoverage: true,
 	// on node 14.x coverage provider v8 offers good speed and more or less good report
 	coverageProvider: 'v8',
@@ -24,7 +26,8 @@ module.exports = {
 		'^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i': `<rootDir>/__mocks__/fileMock.js`,
 
 		// Handle module aliases
-		'^@/components/(.*)$': '<rootDir>/components/$1',
+		'^public/(.*)$': '<rootDir>/public/$1',
+		'^src/(.*)$': '<rootDir>/src/$1',
 	},
 	// Add more setup options before each test is run
 	// setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

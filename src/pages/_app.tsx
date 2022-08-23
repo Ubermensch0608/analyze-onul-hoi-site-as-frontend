@@ -1,7 +1,12 @@
-import Layout from 'layouts/Layout';
+import Layout from 'src/layouts/Layout';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import GlobalStyle from 'styles/GlobalStyle';
+import { RecoilRoot } from 'recoil';
+import GlobalStyle from 'src/styles/GlobalStyle';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -32,9 +37,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</Head>
 
 			<GlobalStyle />
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<QueryClientProvider client={queryClient}>
+				<RecoilRoot>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</RecoilRoot>
+				<ReactQueryDevtools />
+			</QueryClientProvider>
 		</>
 	);
 }

@@ -15,11 +15,11 @@
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
     "incremental": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@public/*":["./public"]
+      "@components/*":["./src/components/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/mocks/handler.js", "src/mocks/browser.js", "src/mocks/handlers.ts"],
   "exclude": ["node_modules"]
 }

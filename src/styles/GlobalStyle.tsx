@@ -11,9 +11,14 @@ const GlobalStyle = (): JSX.Element => {
 					box-sizing: border-box;
 					-moz-osx-font-smoothing: grayscale;
 					-webkit-font-smoothing: antialiased;
-
-					// eslint-disable-next-line
-					font-smoothing: antialiased;
+				}
+				html,
+				body {
+					height: 100%;
+					overflow: hidden;
+				}
+				#__next {
+					height: 100vh;
 				}
 
 				a {
