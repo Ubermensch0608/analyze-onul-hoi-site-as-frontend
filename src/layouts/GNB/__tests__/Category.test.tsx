@@ -1,10 +1,13 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, renderHook, screen, waitFor } from '@testing-library/react';
 import { RecoilRoot } from 'recoil';
 import Category from '../Category';
 import GNB from '../GNB';
 import { CategoryInterface } from 'src/@types/layout';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactNode } from 'react';
+import { useCategory } from 'src/hooks/useCategory';
 
 const server = setupServer(
 	rest.get('/api/layout/category', (req, res, ctx) => {
@@ -19,6 +22,26 @@ const server = setupServer(
 	})
 );
 
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }: { children: ReactNode }) => {
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RecoilRoot>{children}</RecoilRoot>
+		</QueryClientProvider>
+	);
+};
+
+const MockGNB = () => {
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RecoilRoot>
+				<GNB />
+			</RecoilRoot>
+		</QueryClientProvider>
+	);
+};
+
 describe('Category', () => {
 	it('최초에 카테고리는 화면에 노출되지 않아야 한다.', () => {
 		const category = screen.queryByTestId(/moreContentsSection/i);
@@ -26,11 +49,7 @@ describe('Category', () => {
 	});
 
 	it('버튼을 눌렀을 때 카테고리는 화면에 노출되어야 한다.', async () => {
-		render(
-			<RecoilRoot>
-				<GNB />
-			</RecoilRoot>
-		);
+		render(<MockGNB />);
 
 		const button = screen.getByRole('button');
 		fireEvent.click(button);
@@ -40,11 +59,7 @@ describe('Category', () => {
 	});
 
 	it('카테고리가 노출되어있는 상태에서 버튼을 재차 누르면 카테고리가 화면에 노출되지 않아야 한다.', async () => {
-		render(
-			<RecoilRoot>
-				<GNB />
-			</RecoilRoot>
-		);
+		render(<MockGNB />);
 
 		const button = screen.getByRole('button');
 		fireEvent.click(button);
@@ -56,17 +71,14 @@ describe('Category', () => {
 		expect(category).not.toBeInTheDocument();
 	});
 
-	it('카테고리는 카테고리 리스트를 노출시켜야 한다.', () => {
-		render(<Category />);
+	it('카테고리는 카테고리 리스트를 노출시켜야 한다.', async () => {
+		render(<MockGNB />);
 
-		const list = screen.getByRole('list');
-		expect(list).toBeInTheDocument();
-	});
+		const button = screen.getByRole('button');
+		fireEvent.click(button);
 
-	it('카테고리는 카테고리 아이템이 화면에 노출되어야 한다.', async () => {
-		render(<Category />);
-
-		await waitFor(() => screen.getByRole('item'));
-		expect(screen.getByRole('item')).toHaveTextContent('제철회');
+		const categoryList = screen.findByTestId(/categoryList/i);
+		screen.debug();
+		expect(categoryList).toBeInTheDocument();
 	});
 });

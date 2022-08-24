@@ -5,22 +5,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { CategoryInterface } from 'src/@types/layout';
+import { useCategory } from 'src/hooks/useCategory';
 import CategoryItem from './CategoryItem';
 
 const CategoryList = () => {
-	const { data: categories, isFetching } = useQuery<{ categories: CategoryInterface[] }>(
-		['category'],
-		async () => await axios.get('/api/layout/category').then((res) => res.data)
-	);
+	const { data: categories, isFetching } = useCategory();
 
 	if (isFetching) {
 		return <div>fetching...</div>;
 	}
 
-	console.log(categories);
-
 	return (
-		<List>
+		<List data-testid="categoryList">
 			{categories?.categories.map((category) => (
 				<CategoryItem key={`categories-${category.id}`} category={category} />
 			))}
